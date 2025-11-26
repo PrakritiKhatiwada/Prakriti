@@ -6,11 +6,64 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Body */
+/* Light Mode */
 body {
   background: #fdfdfd;
   color: #333;
   line-height: 1.6;
+  transition: background 0.5s, color 0.5s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #2c3e50, #4ca1af);
+}
+
+body.dark-mode .btn {
+  background: #333;
+  color: white;
+}
+
+body.dark-mode .edu-card,
+body.dark-mode .project-card {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .skill-bar {
+  background: #444;
+}
+
+body.dark-mode .skill-progress {
+  background: #4ca1af;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+  background: #333;
+  color: white;
+}
+
+body.dark-mode footer {
+  background: #1e1e1e;
+}
+
+body.dark-mode #topBtn {
+  background: #4ca1af;
+}
+
+body.dark-mode #topBtn:hover {
+  background: #3a8b99;
+}
+
+body.dark-mode .content-section h2:after {
+  background: #4ca1af;
 }
 
 /* Header */
@@ -18,71 +71,132 @@ header {
   text-align: center;
   padding: 80px 20px;
   background: linear-gradient(135deg, #84fab0, #8fd3f4);
-  color: #fff;
+  color: white;
   position: relative;
 }
 
-header h1 {
-  font-size: 2.5em;
-  margin-top: 20px;
-}
-
-header p {
-  margin: 10px 0;
-}
-
-.btn {
-  display: inline-block;
-  background: #fff;
-  color: #333;
-  padding: 10px 20px;
-  text-decoration: none;
+#theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 8px 12px;
   border-radius: 5px;
-  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/* Profile Picture */
+/* Profile */
 .profile-container {
-  display: flex;
-  justify-content: center;
+  display: inline-block;
   margin-bottom: 20px;
 }
 
 .profile-pic {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 4px solid #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+  object-fit: cover;
+}
+
+/* Buttons */
+.btn {
+  background: white;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f0f0f0;
 }
 
 /* Sections */
-section {
+.content-section {
   padding: 60px 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
 }
 
-h2 {
-  text-align: center;
+.content-section h2 {
+  font-size: 2em;
   margin-bottom: 20px;
-  color: #444;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.content-section h2:after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background: #3498db;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Qualification */
+.edu-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.edu-card {
+  background: #f0f0f0;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.edu-card h3 {
+  color: #3498db;
+  margin-bottom: 10px;
 }
 
 /* Skills */
-#skills ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.skill-bar-container {
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-#skills li {
-  background: #eee;
-  padding: 10px 15px;
+.skill-item {
+  margin-bottom: 20px;
+}
+
+.skill-item span {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 25px;
+  background: #e0e0e0;
   border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  width: 0;
+  background: #3498db;
+  padding-right: 10px;
+  color: white;
+  text-align: right;
+  line-height: 25px;
+  transition: width 1.5s ease-out;
 }
 
 /* Projects */
@@ -91,19 +205,161 @@ h2 {
   padding: 20px;
   margin: 15px 0;
   border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Contact */
-#contact a {
-  color: #0088cc;
-  text-decoration: none;
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* Footer         */
-footer {
+.project-card h3 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+/* Video */
+.video-container video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Audio Section */
+.audio-container {
+  max-width: 600px;
+  margin: 20px auto;
   text-align: center;
-  background: #333;
-  color: #fff;
-  padding: 15px;
+}
+
+audio {
+  width: 100%;
+  border-radius: 10px;
+  background: #f0f0f0;
+  padding: 10px;
+}
+
+body.dark-mode audio {
+  background: #1e1e1e;
+}
+
+/* Image Slider */
+.slider-container {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider-track {
+  display: flex;
+  transition: 0.5s ease-in-out;
+}
+
+.slider-track img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+/* Canvas Section */
+.canvas-container {
+  text-align: center;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+#myCanvas {
+  width: 100%;
+  height: 300px;
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+/* Contact Form */
+#contact-form {
+  max-width: 500px;
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #3498db;
+  padding: 10px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+}
+
+.contact-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Back to Top */
+#topBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  background: #3498db;
+  display: none;
+  border-radius: 50%;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background: #f0f0f0;
+  padding: 20px;
+  text-align: center;
   margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  .edu-card { width: 100%; max-width: 400px; }
+  .profile-pic { width: 120px; height: 120px; }
 }
